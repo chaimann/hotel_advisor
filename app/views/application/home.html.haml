@@ -1,1 +1,12 @@
-%h1 Welcome to HotelAdvisor!
+- if user_signed_in?
+  %p Hello, user!
+  %p
+    = link_to "Add a hotel", new_hotel_path
+  %p
+    = link_to "View the full list", "#"
+- else
+  .jumbotron
+    %h1 Welcome to HotelAdvisor!
+    %p.lead Been there, liked it, advise it!
+    %p
+      = link_to "Get started", new_user_registration_path, class: "btn btn-lg btn-success", role: "button"
