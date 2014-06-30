@@ -1,2 +1,17 @@
 %p
   = @hotel.title
+  = @hotel.grades.size
+%p
+  *placeholder for image*
+%p  
+  Breakfast 
+  = @hotel.breakfast_included ? "is" : "is not"
+  included
+%p
+  Room description:
+%p  
+  = @hotel.room_description
+%p
+  Price for room:
+%p  
+  = @hotel.price
