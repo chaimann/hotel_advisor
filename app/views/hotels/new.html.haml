@@ -1,17 +1,17 @@
-.error
-  -if @hotel.errors.any?
+-if @hotel.errors.any?
+  .alert.alert-danger{role: "alert"}
     = @hotel.errors.full_messages
 
 .col-md-6
   .panel.panel-primary
-    .panel-heading Simple Form: Horizontal Form
+    .panel-heading Enter hotel info
     .panel-body
       = simple_form_for @hotel do |f|
         = f.input :title, placeholder: 'Enter title'
         / rendering fields for grade input
         = f.simple_fields_for :grades do |g|
           = g.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
-          = g.input :user_id, label: false, input_html: { value: current_user.id, type: 'hidden' }
+          = g.input :user_id, as: :hidden, input_html: { value: current_user.id }
         = f.input :breakfast_included
         = f.input :room_description, as: :text
         = f.input :price

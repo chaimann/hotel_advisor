@@ -1,6 +1,7 @@
 %p
   = @hotel.title
-  = @hotel.grades.size
+  | Average rating:
+  = @hotel.rating
 %p
   *placeholder for image*
 %p  
@@ -9,9 +10,17 @@
   included
 %p
   Room description:
-%p  
   = @hotel.room_description
 %p
   Price for room:
-%p  
   = @hotel.price
+
+.col-md-6
+  .panel.panel-primary
+    .panel-heading Enter your feedback
+    .panel-body
+      = simple_form_for @grade do |f|
+        = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
+        = f.input :comment, as: :text
+        = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+        = f.submit 'Submit!'

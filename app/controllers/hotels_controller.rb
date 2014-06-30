@@ -9,7 +9,7 @@ class HotelsController < ApplicationController
   def create
     @hotel = Hotel.new(hotel_params)
     if @hotel.save
-      flash[:success] = "Successfully created hotel #{@hotel.title}!"
+      #flash[:success] = "Successfully created hotel #{@hotel.title}!"
       redirect_to @hotel
     else
       render 'new'
@@ -18,6 +18,7 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    @grade = @hotel.grades.build
   end
 
   private
