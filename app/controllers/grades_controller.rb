@@ -4,6 +4,9 @@ class GradesController < ApplicationController
     @grade = current_hotel.grades.build(grade_params)
     if @grade.save
       redirect_to current_hotel
+    else
+      @hotel = @grade.hotel
+      redirect_to current_hotel
     end    
   end
 
