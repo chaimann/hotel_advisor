@@ -15,12 +15,20 @@
   Price for room:
   = @hotel.price
 
-.col-md-6
-  .panel.panel-primary
-    .panel-heading Enter your feedback
-    .panel-body
-      = simple_form_for @grade do |f|
-        = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
-        = f.input :comment, as: :text
-        = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-        = f.submit 'Submit!'
+-if !grade_by_user_exists?
+  .col-md-6
+    .panel.panel-primary
+      .panel-heading Leave your feedback
+      .panel-body
+        = simple_form_for @grade do |f|
+          = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
+          = f.input :comment, as: :text
+          = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+          = f.input :hotel_id, as: :hidden, input_html: { value: @hotel.id }
+          = f.submit 'Submit!'
+
+%ul.col-md-6.list-group
+  Comments left by other users:
+  - @hotel.grades.each do |g|
+    -if !g.comment.blank?
+      %li.list-group-item= g.comment
