@@ -1,7 +1,7 @@
 %p
   #{@hotel.title} | Average rating: #{@hotel.rating}
 %p
-  *placeholder for image*
+  = image_tag @hotel.image_url(:thumb).to_s
 %p  
   Breakfast #{@hotel.breakfast_included ? "is" : "is not"} included
 %p

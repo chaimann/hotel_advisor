@@ -15,6 +15,8 @@
         = f.input :breakfast_included
         = f.input :room_description, as: :text
         = f.input :price
+        = f.input :image, label: 'Photo'
+        = f.input :remote_image_url, label: 'or paste image URL'
         = f.simple_fields_for :address do |a|
           = a.input :country, as: :string
           = a.input :state

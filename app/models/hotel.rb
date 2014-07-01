@@ -2,6 +2,7 @@ class Hotel < ActiveRecord::Base
   has_many :grades
   has_one :address
   has_many :comments
+  mount_uploader :image, ImageUploader
   validates :title, presence: true, length: { maximum: 30 }
   validates :room_description, length: { maximum: 300 }
   validates_associated :grades
