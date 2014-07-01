@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630161455) do
+ActiveRecord::Schema.define(version: 20140701162356) do
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -23,9 +23,17 @@ ActiveRecord::Schema.define(version: 20140630161455) do
     t.integer  "hotel_id"
   end
 
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.integer  "grade_id"
+    t.integer  "hotel_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "grades", force: true do |t|
     t.integer  "value"
-    t.string   "comment"
     t.integer  "hotel_id"
     t.integer  "user_id"
     t.datetime "created_at"

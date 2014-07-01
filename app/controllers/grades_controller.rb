@@ -10,6 +10,8 @@ class GradesController < ApplicationController
   private
 
   def grade_params
-    params.require(:grade).permit(:value, :comment, :user_id, :hotel_id)
+    params.require(:grade).permit(:value, :user_id, :hotel_id,
+                                  comment_attributes: [:content, :grade_id,
+                                  :user_id, :hotel_id])
   end
 end

@@ -1,19 +1,13 @@
 %p
-  = @hotel.title
-  | Average rating:
-  = @hotel.rating
+  #{@hotel.title} | Average rating: #{@hotel.rating}
 %p
   *placeholder for image*
 %p  
-  Breakfast 
-  = @hotel.breakfast_included ? "is" : "is not"
-  included
+  Breakfast #{@hotel.breakfast_included ? "is" : "is not"} included
 %p
-  Room description:
-  = @hotel.room_description
+  Room description: #{@hotel.room_description}
 %p
-  Price for room:
-  = @hotel.price
+  Price for room: #{@hotel.price}
 
 -if !grade_by_user_exists?
   .col-md-6
@@ -22,13 +16,17 @@
       .panel-body
         = simple_form_for @grade do |f|
           = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
-          = f.input :comment, as: :text
+          = f.simple_fields_for :comment do |c|
+            = c.input :content, as: :text, label: 'Comment'
+            = c.input :user_id, as: :hidden, input_html: { value: current_user.id }
+            = c.input :hotel_id, as: :hidden, input_html: { value: @hotel.id }
           = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
           = f.input :hotel_id, as: :hidden, input_html: { value: @hotel.id }
           = f.submit 'Submit!'
 
-%ul.col-md-6.list-group
-  Comments left by other users:
-  - @hotel.grades.each do |g|
-    -if !g.comment.blank?
-      %li.list-group-item= g.comment
+- if @hotel.comments.any?
+  %h4
+    Comments
+    %span.badge #{@hotel.comments.count}
+    %h5.col-md-6
+      %ul.list-group= render @hotel.comments
