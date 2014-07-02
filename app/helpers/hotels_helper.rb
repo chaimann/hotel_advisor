@@ -5,7 +5,7 @@ module HotelsHelper
   end
 
   def grade_by_user_exists?
-    current_user.grades.where("hotel_id = ?", params[:id]).count > 0
+    current_user.grades.where("hotel_id = ?", params[:id]).any?
   end
 
 end

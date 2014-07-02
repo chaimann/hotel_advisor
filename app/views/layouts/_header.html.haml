@@ -6,11 +6,9 @@
     .navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li
-          = link_to "All hotels", "#"
+          = link_to "All hotels", hotels_path
         %li
           = link_to "Add a hotel", new_hotel_path
-        %li
-          = link_to "Link", "#"
       %ul.nav.navbar-nav.navbar-right
         %li
           -if user_signed_in?

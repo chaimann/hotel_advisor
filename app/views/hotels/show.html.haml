@@ -15,6 +15,7 @@
       .panel-heading Leave your feedback
       .panel-body
         = simple_form_for @grade do |f|
+          = render 'shared/error_messages', object: f.object
           = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
           = f.simple_fields_for :comment do |c|
             = c.input :content, as: :text, label: 'Comment'

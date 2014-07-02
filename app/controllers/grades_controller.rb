@@ -2,12 +2,12 @@ class GradesController < ApplicationController
 
   def create
     @grade = current_hotel.grades.build(grade_params)
-    if @grade.save
-      redirect_to current_hotel
-    else
-      @hotel = @grade.hotel
-      redirect_to current_hotel
-    end    
+    @grade.save
+    if @grade.errors.any?
+      flash[:danger] = ""
+      @grade.errors.full_messages.each { |msg| flash[:danger] << "#{msg}; " }
+    end
+    redirect_to current_hotel
   end
 
   private

@@ -1,12 +1,9 @@
--if @hotel.errors.any?
-  .alert.alert-danger{role: "alert"}
-    = @hotel.errors.full_messages
-
 .col-md-6
   .panel.panel-primary
     .panel-heading Enter hotel info
     .panel-body
       = simple_form_for @hotel do |f|
+        = render 'shared/error_messages', object: f.object
         = f.input :title, placeholder: 'Enter title'
         / rendering fields for grade input
         = f.simple_fields_for :grades do |g|
