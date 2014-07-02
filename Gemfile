@@ -28,7 +28,7 @@ end
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'haml'
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 gem 'rmagick'
 gem 'carrierwave'
 
