@@ -7,6 +7,7 @@ class Hotel < ActiveRecord::Base
   validates :room_description, length: { maximum: 300 }
 
   accepts_nested_attributes_for :grades, :address
+  validates_associated :grades
 
   def rating
     Grade.where("hotel_id = ?", id).average(:value).to_f.round(2)

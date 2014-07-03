@@ -10,4 +10,5 @@
     .container
       - flash.each do |key, value|
         = content_tag(:div, value, class: flash_class(key))
+        
       = yield

@@ -1,30 +1,45 @@
-%p
-  #{@hotel.title} | Average rating: #{@hotel.rating}
-%p
-  = image_tag @hotel.image_url(:thumb).to_s
-%p  
-  Breakfast #{@hotel.breakfast_included ? "is" : "is not"} included
-%p
-  Room description: #{@hotel.room_description}
-%p
-  Price for room: #{@hotel.price}
+%h1
+  = @hotel.title
+  %small | Average rating: #{@hotel.rating}
+.img-thumbnail= image_tag @hotel.image_url(:thumb).to_s
+
+%dl.dl-horizontal
+  %dt Breakfast:
+  %dd #{@hotel.breakfast_included ? "is" : "is not"} included
+  %dt Room description:
+  %dd #{@hotel.room_description.blank? ? "n/a" : @hotel.room_description}
+  %dt Price for room:
+  %dd #{@hotel.price.nil? ? "n/a" : @hotel.price.round(2)}
+
+-if @hotel.address.present?
+  %dl.dl-horizontal
+    %dt Country:
+    %dd= @hotel.address[:country]
+    %dt State:
+    %dd= @hotel.address[:state]
+    %dt City:
+    %dd= @hotel.address[:city]
+    %dt Street:
+    %dd= @hotel.address[:street]
+     
+
 
 -if !grade_by_user_exists?
   .col-md-6
     .panel.panel-primary
       .panel-heading Leave your feedback
       .panel-body
-        = simple_form_for @grade do |f|
-          / = render 'shared/error_messages', object: f.object
+        = simple_form_for @grade, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,  wrapper_mappings: { radio_buttons: :horizontal_radio_and_checkboxes } do |f|
           = f.error_notification
-          = f.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
+          = f.input :value, as: :radio_buttons, collection: 1..5, label: 'Your rating here', input_html: { class: 'radio-inline' }
           = f.simple_fields_for :comment do |c|
             = c.input :content, as: :text, label: 'Comment'
             = c.input :user_id, as: :hidden, input_html: { value: current_user.id }
             = c.input :hotel_id, as: :hidden, input_html: { value: @hotel.id }
           = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
           = f.input :hotel_id, as: :hidden, input_html: { value: @hotel.id }
-          = f.submit 'Submit!'
+          = f.button :submit, 'Submit!'
+   
 
 - if @hotel.comments.any?
   %h4

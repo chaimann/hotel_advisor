@@ -37,3 +37,5 @@ group :development do
   gem "binding_of_caller"
 end
 
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

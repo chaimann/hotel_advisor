@@ -1,40 +1,21 @@
-/ .col-md-6
-/   .panel.panel-primary
-/     .panel-heading Enter hotel info
-/     .panel-body
-/       = simple_form_for @hotel do |f|
-/         = render 'shared/error_messages', object: f.object
-/         = f.error_notification
-/         = f.input :title, placeholder: 'Enter title'
-/         / rendering fields for grade input
-/         = f.simple_fields_for :grades do |g|
-/           = g.input :value, collection: 1..5, as: :radio_buttons, label: 'Your rating here'
-/           = g.input :user_id, as: :hidden, input_html: { value: current_user.id }
-/         = f.input :breakfast_included
-/         = f.input :room_description, as: :text
-/         = f.input :price
-/         = f.input :image, label: 'Photo'
-/         = f.input :remote_image_url, label: 'or paste image URL'
-/         = f.simple_fields_for :address do |a|
-/           = a.input :country, as: :string
-/           = a.input :state
-/           = a.input :city
-/           = a.input :street
-/         = f.button :submit
-= simple_form_for @hotel, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,  wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes,radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
-  = f.error_notification
-  = f.input :title, placeholder: 'Title'
-  = f.simple_fields_for :grades do |g|
-    = g.input :value, as: :radio_buttons, collection: 1..5, label: 'Your rating here'
-    = g.input :user_id, as: :hidden, input_html: { value: current_user.id }
-  = f.input :image, as: :file, label: 'Photo'
-  = f.input :remote_image_url, label: 'or paste image URL'
-  = f.input :breakfast_included
-  = f.input :room_description, as: :text
-  = f.input :price
-  = f.simple_fields_for :address do |a|
-    = a.input :country, as: :string
-    = a.input :state
-    = a.input :city
-    = a.input :street
-  = f.button :submit
+.row
+  .panel.panel-primary
+    .panel-heading Enter hotel info
+    .panel-body
+      = simple_form_for @hotel, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,  wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes,radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+        = f.error_notification
+        = f.input :title, placeholder: 'Title'
+        = f.simple_fields_for :grades do |g|
+          = g.input :value, as: :radio_buttons, collection: 1..5, label: 'Your rating here', input_html: { class: 'radio-inline' }
+          = g.input :user_id, as: :hidden, input_html: { value: current_user.id }
+        = f.input :image, as: :file, label: 'Photo'
+        = f.input :remote_image_url, label: 'or paste image URL'
+        = f.input :breakfast_included
+        = f.input :room_description, as: :text
+        = f.input :price
+        = f.simple_fields_for :address do |a|
+          = a.input :country, as: :string
+          = a.input :state
+          = a.input :city
+          = a.input :street
+        = f.button :submit
