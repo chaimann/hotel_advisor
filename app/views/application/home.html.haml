@@ -1,9 +1,7 @@
 - if user_signed_in?
-  %p Hello, user!
-  %p
-    = link_to "Add a hotel", new_hotel_path
-  %p
-    = link_to "View the full list", hotels_path
+  .row
+    %h1 Top 5 Hotels
+    = render 'top_five'
 - else
   .jumbotron
     %h1 Welcome to HotelAdvisor!

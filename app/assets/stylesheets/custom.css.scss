@@ -52,6 +52,25 @@ span.radio {
   margin-right: 10px;
 }
 
+.container {
+  .row {
+    h1 {
+      margin-bottom: 20px;
+    }
+    .col-md4 {
+      text-align: left;
+      width: 20%;
+      float: left;
+      padding-right: 15px;
+      padding-left: 15px;
+      h4 a {
+        text-decoration: none;
+      }
+    }
+  }  
+}
+
+
 /* Hotel index */
 .hotels {
   list-style: none;

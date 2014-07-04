@@ -1,0 +1,8 @@
+- top_five.each do |h_id, avg|
+  .col-md4
+    - @hotel = Hotel.find(h_id)
+    %h5=link_to @hotel.title, @hotel
+    %p.img-thumbnail
+      = link_to image_tag(@hotel.image_url(:top_five).to_s), @hotel
+    %p
+      Rating: #{avg.to_f.round(2)}
