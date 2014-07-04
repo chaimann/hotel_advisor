@@ -1,15 +1,13 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the HotelsHelper. For example:
-#
-# describe HotelsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
+# # Specs in this file have access to a helper object that includes
+# # the HotelsHelper. For example:
+# #
+# # describe HotelsHelper do
+# #   describe "string concat" do
+# #     it "concats two strings with spaces" do
+# #       helper.concat_strings("this","that").should == "this that"
+# #     end
+# #   end
+# # end
 # end
-describe HotelsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
-end

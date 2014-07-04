@@ -1,5 +1,15 @@
 require 'spec_helper'
 
-describe Hotel do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Hotel" do
+  before do
+    @hotel = Hotel.new(title: "Hotel", grades_attributes: { value: 5 })
+  end
+
+  subject { @hotel }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:breakfast_included) }
+
+
+
 end
