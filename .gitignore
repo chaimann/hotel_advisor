@@ -10,7 +10,9 @@
 /tmp
 
 # Ignore other unneeded files.
+/public/uploads
 database.yml
+secrets.yml
 doc/
 *.swp
 *~
