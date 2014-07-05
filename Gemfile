@@ -12,6 +12,8 @@ end
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'rspec-its'
 end
 
 gem 'sass-rails'
