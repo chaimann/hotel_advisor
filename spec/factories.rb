@@ -8,13 +8,4 @@ FactoryGirl.define do
 	factory :hotel do
 		title "Love hotel"
 	end
-
-  factory :hotel_with_grade do
-    title "Love Hotel"
-    grade { [FactoryGirl.create(:grade)] }
-  end
-
-  factory :grade do
-    value 5
-  end
 end
