@@ -1,10 +1,11 @@
+-if params[:controller] == "devise/sessions"
+  -in_or_up = "in"
+  -url = session_path(resource_name)
+-else
+  -in_or_up = "up"
+  -url = registration_path(resource_name)
+-provide(:title, "Sign #{in_or_up}")
 .form-signin
-  -if params[:controller] == "devise/sessions"
-    -in_or_up = "in"
-    -url = session_path(resource_name)
-  -else
-    -in_or_up = "up"
-    -url = registration_path(resource_name)
   %h2.form-signin-heading Sign #{in_or_up}
   = simple_form_for(resource, as: resource_name, url: url) do |f|
   

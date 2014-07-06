@@ -1,7 +1,11 @@
-- top_five.each do |h|
-  .col-md4
-    %h5=link_to h.title, h
-    %p.img-thumbnail
-      = link_to image_tag(h.image_url(:top_five).to_s), h
-    %p
-      Rating: #{h.rating}
+-top_five_hotels = top_five
+-if top_five_hotels.blank?
+  .alert.alert-warning Oops, nothing to display...
+-else
+  -top_five_hotels.each do |h|
+    .col-md4
+      %h5=link_to h.title, h
+      %p.img-thumbnail
+        = link_to image_tag(h.image_url(:top_five).to_s), h
+      %p
+        Rating: #{h.rating}

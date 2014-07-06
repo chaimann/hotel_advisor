@@ -6,6 +6,8 @@ class GradesController < ApplicationController
     if @grade.errors.any?
       flash[:danger] = ""
       @grade.errors.full_messages.each { |msg| flash[:danger] << "#{msg}; " }
+    else
+      flash[:success] = "Thanks for your feedback!"
     end
     redirect_to current_hotel
   end
