@@ -5,9 +5,11 @@ ruby '2.1.2'
 gem 'rails'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
 end
+
+gem 'sqlite3'
+
 
 group :test do
   gem 'selenium-webdriver'
