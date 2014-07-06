@@ -42,6 +42,11 @@ span.radio {
 }
 
 /* Misc */
+html body {
+  background: url('background.png');
+  background-attachment: fixed;
+}
+
 #btn-sign{
   a {
     color: #4D4D4D;
@@ -85,13 +90,16 @@ span.radio {
   padding: 0px;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid #8D8D8D;
     width: 50%;
   }
 }
 .content {
   display: block;
 }
-.timestamp {
-  color: #8B8B8B;
+.timestamp small {
+  color: #555555;
+}
+#hotel-links {
+  color: #21598A
 }

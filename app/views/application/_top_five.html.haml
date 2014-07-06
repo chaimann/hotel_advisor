@@ -4,7 +4,7 @@
 -else
   -top_five_hotels.each do |h|
     .col-md4
-      %h5=link_to h.title, h
+      %h5=link_to h.title, h, id: "hotel-links"
       %p.img-thumbnail
         = link_to image_tag(h.image_url(:top_five).to_s), h
       %p
