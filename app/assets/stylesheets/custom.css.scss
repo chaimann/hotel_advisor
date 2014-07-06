@@ -71,7 +71,7 @@ span.radio {
       float: left;
       padding-right: 15px;
       padding-left: 15px;
-      h4 a {
+      h5 a {
         text-decoration: none;
       }
     }
@@ -79,13 +79,19 @@ span.radio {
 }
 
 
-/* Hotel index */
-.hotels {
+/* Hotels and comments list */
+.h-c-list {
   list-style: none;
   padding: 0px;
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
-    width: 50%
+    width: 50%;
   }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: #8B8B8B;
 }
