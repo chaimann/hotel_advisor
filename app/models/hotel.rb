@@ -11,7 +11,7 @@ class Hotel < ActiveRecord::Base
   validates_associated :grades
 
   def rating
-    Grade.where("hotel_id = ?", id).average(:value).to_f.round(2)
+    grades.average(:value).to_f.round(2)
   end
 
 end

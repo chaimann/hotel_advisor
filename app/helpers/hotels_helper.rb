@@ -9,7 +9,7 @@ module HotelsHelper
   end
 
   def top_five
-    Grade.all.group(:hotel_id).average(:value).sort_by { |h_id, avg| avg }.last(5)
+    Hotel.joins(:grades).group('hotels.id').select('hotels.*, AVG(grades.value) AS avg_rating').order('avg_rating desc').limit(5)
   end
 
 end
